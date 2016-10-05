@@ -13,6 +13,18 @@ const TodoList = ({ todos, onTodoClick }) => (
   </ul>
 )
 
+/*const TodoCheckList = ({ todos, onTodoClick }) => (
+  <ul>
+    {todos.map(todo =>
+      <Todo
+        key={todo.id}
+        {...todo}
+        onClick={() => onTodoCheck(todo.id)}
+      />
+    )}
+  </ul>
+)*/
+
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,

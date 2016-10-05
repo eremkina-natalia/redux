@@ -14,3 +14,13 @@ export const toggleTodo = (id) => ({
   type: 'TOGGLE_TODO',
   id
 })
+
+export const loginTodo = (login) => ({
+  type: 'LOGIN_TODO',
+  login
+})
+
+  export const checkTodo = (text) => ({
+    type: 'CHECK_TODO',
+    text
+})
