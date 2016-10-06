@@ -4,7 +4,6 @@ const Link = ({ active, children, onClick }) => {
   if (active) {
     return <span className="activelink">{children}</span>
   }
-
   return (
     <a href="#" className="links"
        onClick={e => {

@@ -1,73 +1,68 @@
-class IndexedDB {
+import AddTodo from '../containers/AddTodo'
 
-  constructor() {
-    this.indexedDB;
-    this.dbName = "contentDB";
-    this.dbVersion = 1;
-  }
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 
-  createObjectStore(cb) {
-    this.dbVersion++;
-    let request = this.indexedDB.open(this.dbName, this.dbVersion);
-    request.onupgradeneeded = function(event) {
-      let contentDB = event.target.result;
-      contentDB.createObjectStore("arts-content", { autoIncrement : true });
-      contentDB.createObjectStore("news-content", { autoIncrement : true });
-      contentDB.createObjectStore("sports-content", { autoIncrement : true });
-    }
-    request.onsuccess = function(event) {
-      request.result.close();
-      cb();
-    }
-  }
+var request = window.indexedDB.open("testDB", 2);
 
-  checkObjectStore(section, cb) {
-    let curStore = section.toLowerCase() + "-content";
-    let request = this.indexedDB.open(this.dbName, this.dbversion);
-    request.onsuccess = function(event) {
-      let contentDB = event.target.result;
-      let transaction = contentDB.transaction([curStore], "readwrite");
-      let contentStore = transaction.objectStore(curStore);
-      let contentStoreCountRequest = contentStore.count();
-      contentStore.getAll().onsuccess = function(event) {
-        cb(event.target.result[0]);
-      }
-    }
-  }
+ var db;
+/*   console.log("Error opening DB", event);
+ };
+ request.onupgradeneeded = function(event){
+   console.log("Upgrading");
 
-  storeContent(section, content, cb) {
-    this.dbVersion++;
-    let curStore = section.toLowerCase() + "-content";
-    let request = this.indexedDB.open(this.dbName, this.dbVersion);
-    request.onsuccess = function(event) {
-      console.log("STORE OBJECTS HERE");
-      let contentDB = event.target.result;
-      let transaction = contentDB.transaction([curStore], "readwrite");
-      let contentStore = transaction.objectStore(curStore);
-      let contentStoreRequest = contentStore.put(content);
-      contentDB.close();
-      contentStoreRequest.onsuccess = function(event) {
-        cb(section);
-      }
-    }
-  }
+ };
+ request.onsuccess = function(event){
+   console.log("Success opening DB");
+   db = event.target.result;
+ }
 
-  dbExists(cb) {
-    let dbExists = true;
-    let request = this.indexedDB.open(this.dbName);
-    request.onsuccess = function() {
-      request.result.close();
-      cb(dbExists);
-    }
-    request.onupgradeneeded = function() {
-      dbExists = false;
-    }
-  }
+// Добавление объекта в ObjectStore
+ var transaction = db.transaction(["students"],"readwrite");
+ transaction.oncomplete = function(event) {
+   console.log("Success");
+ };
+ transaction.onerror = function(event) {
+   console.log("Error");
+ };
+ var store = transaction.objectStore("students");
+ store.add({rollNo: rollNo, name: name});
 
-  init() {
-    this.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB;
-  }
 
-}
+// Удаление данных из ObjectStore
 
-export default new IndexedDB();
+ db.transaction(["students"],"readwrite").objectStore("students").delete(rollNo);
+
+// Доступ к объекту данных через ключ ObjectStore
+var request = db.transaction(["students"],"readwrite").objectStore("students").get(rollNo);
+request.onsuccess = function(event){
+
+// Обновление(редактирование данных) объекта
+
+   var transaction = db.transaction(["students"],"readwrite");
+   var objectStore = transaction.objectStore("students");
+   var request = objectStore.get(rollNo);
+   request.onsuccess = function(event){
+     console.log("Updating : "+request.result.name + " to " + name);
+     request.result.name = name; objectStore.put(request.result);
+   };
+*/
+var request =  indexedDB.open("Todos1");
+request.onupgradeneeded = function() {
+    var db = request.result;
+    var store = db.createObjectStore("Todo", {keyPath: "date"});
+    var titleIndex = store.createIndex("by_title", "title", {unique: true});
+
+  //var title = document.getElementByClassName(toDoInput).value;
+  store.put({title: "wash the dishes",  date: 123456});
+  store.put({title: "read the book",  date: 234567});
+  store.put({title: "clean the room",  date: 345678});
+  store.put({title: "clean the ",  date: 345679});
+  store.put({title: "clean room",  date: 345688});
+
+  var transaction = db.transaction(["read"], "alima");
+};
+request.onsuccess = function() {
+    var db = request.result;
+
+};

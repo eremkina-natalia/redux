@@ -4,7 +4,6 @@ import { addTodo } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
   let input
-
   return (
     <div>
       <form className="todoform" onSubmit={e => {
@@ -26,5 +25,7 @@ let AddTodo = ({ dispatch }) => {
   )
 }
 AddTodo = connect()(AddTodo)
+// это два вызова ф-и, первый аргумент-ф-я,кот должна возвращать объект,
+//во вторую ф-ю необходимо передать компонент react
 
 export default AddTodo

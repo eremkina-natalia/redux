@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
-import Check from './Check'
+//import Check from './Check'
+import { addTodo } from '../actions'
 
-const Todo = ({ onClick, completed, text, onCheck }) => (
+const Todo = ({ onClick, completed, text, Check, checked }) => (
   <div>
-    <li
+    <li className="liTodo"
       onClick={onClick}
       style={{
         textDecoration: completed ? 'line-through' : 'none',
@@ -11,18 +12,18 @@ const Todo = ({ onClick, completed, text, onCheck }) => (
       }}
     >
       {text}
+      <hr />
     </li>
 
     <button className="changeBtn"
-      onClick={e => {
-        e.preventDefault()
-        onCheck={onCheck}
-      }} >
+      onClick={onClick}
+      style={{
+          visibility: checked ? 'hidden' : 'visible'
+      }}
+    >
       Change
     </button>
-
     <div className="clear"></div>
-
   </div>
 )
 
