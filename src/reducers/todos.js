@@ -1,11 +1,43 @@
+//import * as types from '../constants/ActionTypes';
+/*import lodash from 'lodash'
+import omit from 'lodash/omit';
+import assign from 'lodash/assign';
+import mapValues from 'lodash/mapValues';
+*/
+/*const initialState = {
+  todos: [1, 2, 3],
+  todosById: {
+    1: {
+      id: 1,
+      text: 'wash the dishes'
+    },
+    2: {
+      id: 2,
+      text: 'read the book'
+    },
+    3: {
+      id: 3,
+      text: 'do homework'
+    }
+  }
+};*/
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
         id: action.id,
         text: action.text,
-        completed: false
+        completed: false,
+        checked: false,
       }
+      case 'CHECK_TODO':
+        return {
+          id: action.id,
+          text: action.text,
+          checked: true,
+        }
+
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {
         return state
@@ -13,12 +45,54 @@ const todo = (state, action) => {
 
       return {
         ...state,
-        completed: !state.completed
+        completed: !state.completed,
+        checked: !state.checked
       }
     default:
       return state
   }
 }
+
+/*export default function todos(state = [], action) {
+  switch (action.type) {
+
+      case 'ADD_TODO':
+        return [
+          ...state,
+          todo(undefined, action)
+        ]
+      case 'CHECK_TODO':
+        return [
+          ...state,
+          todo(undefined, action)
+        ]
+      case 'TOGGLE_TODO':
+        return state.map(t =>
+          todo(t, action)
+        )
+
+    case types.DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(id => id !== action.id),
+        todosById: omit(state.todosById, action.id) //возвращает объект, у кот убраны некоторые свойства
+      }
+
+    case types.STAR_TODO:
+      return {
+        ...state,
+        todosById: mapValues(state.todosById, (todos) => { //создает новый объект с такими же ключами,как у исходного, значения получаются вызовом callback ф-и к кажд эл-ту
+          return todos.id === action.id ?
+            assign({}, todos, { starred: !todos.starred }) : //дополняет объект отсутствующими свойствами из др объекта
+            todos
+        })
+      }
+
+    default:
+      return state;
+  }
+}*/
+
 
 const todos = (state = [], action) => {
   switch (action.type) {
@@ -26,6 +100,11 @@ const todos = (state = [], action) => {
       return [
         ...state,
         todo(undefined, action)
+      ]
+    case 'CHECK_TODO':
+      return [
+        ...state,
+        //todo(state, action)
       ]
     case 'TOGGLE_TODO':
       return state.map(t =>

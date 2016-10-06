@@ -3,15 +3,27 @@ import Todo from './Todo'
 
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>
+  {todos.map(todo =>
+    <Todo
+      key={todo.id}
+      {...todo} //это такой оператор расширения, кот позволяет хранить состояние неизменным
+      onClick={() => onTodoClick(todo.id)}
+    />
+  )}
+  </ul>
+)
+
+/*const TodoCheckList = ({ todos, onTodoClick }) => (
+  <ul>
     {todos.map(todo =>
       <Todo
         key={todo.id}
         {...todo}
-        onClick={() => onTodoClick(todo.id)}
+        onClick={() => onTodoCheck(todo.id)}
       />
     )}
   </ul>
-)
+)*/
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({

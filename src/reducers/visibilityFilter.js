@@ -1,3 +1,4 @@
+// reducer обрабатывает action и может вносить изменение в состояние
 const visibilityFilter = (state = 'SHOW_ALL', action) => {
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER':

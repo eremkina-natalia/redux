@@ -29,13 +29,11 @@ body{
 .none {
   display: none !important;
 }
-form {
+.todoform {
+
   background: #FFF;
   border: 1px solid gray;
   margin: 0 auto;
-  box-shadow: 2px 2px 5px -1px gray;
-  
-  padding: 10px;
 }
 
 ul{
@@ -51,9 +49,10 @@ ul li{
     color: #7B8585;
     transition: 0.3s;
     font-size: 17px;
-    width: 460px;
+    width: 390px;
     height: 25px;
     overflow-x: hidden;
+    float: left;
 }
 
 ul li:hover{
@@ -94,4 +93,40 @@ p{
 }
 h1{
   margin: 20px;
+}
+.formLogin{
+  margin: 0 auto;
+  margin-right: 5px;
+  width: 150px;
+}
+.inputLogin{
+  margin-bottom: 5px;
+  border-radius: 2px;
+  height: 20px;
+  width: 150px;
+}
+.inputPswd{
+  margin-bottom: 5px;
+  border-radius: 2px;
+  height: 20px;
+  width: 150px;
+}
+.signInBtn{
+  float: right;
+  border-radius: 2px;
+  background: #beecea;
+  height: 20px;
+  width: 60px;
+}
+.changeBtn{
+  float: right;
+  border-radius: 2px;
+  background: #beecea;
+  height: 45px;
+  width: 70px;
+  padding: 10px 10px;
+
+}
+.clear{
+  clear: both;
 }

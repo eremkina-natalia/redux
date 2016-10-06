@@ -1,16 +1,47 @@
+// action описывает, какие изменения необходимо сделать
+import * as types from '../constants/ActionTypes';
+
 let nextTodoId = 0
-export const addTodo = (text) => ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
-})
+export function addTodo(text){
+  return{
+    type: types.ADD_TODO,
+    id: nextTodoId++,
+    text
+  };
+}
 
-export const setVisibilityFilter = (filter) => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter
-})
+export function setVisibilityFilter(filter){
+  return{
+    type: types.SET_VISIBILITY_FILTER,
+    filter
+  };
+}
 
-export const toggleTodo = (id) => ({
-  type: 'TOGGLE_TODO',
-  id
-})
+export function toggleTodo(id){
+  return{
+    type: types.TOGGLE_TODO,
+    id
+  };
+}
+
+export function loginTodo(login){
+  return{
+    type: types.LOGIN_TODO,
+    login
+  };
+}
+
+export function checkTodo(text){
+  return{
+    type: types.CHECK_TODO,
+    id: addTodo.id,
+    text
+  };
+}
+
+export function deleteTodo(id) {
+  return {
+    type: types.DELETE_TODO,
+    id
+  };
+}
