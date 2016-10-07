@@ -1,3 +1,12 @@
+const initialState = [
+  {
+    text: 'Use Redux',
+    completed: false,
+    id: 0
+  }
+]
+
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -11,7 +20,6 @@ const todo = (state, action) => {
         return {
           id: action.id,
           text: action.text,
-
           checked: true,
         }
 
@@ -22,8 +30,8 @@ const todo = (state, action) => {
 
       return {
         ...state,
-        completed: !state.completed,
-        checked: !state.checked
+        checked: !state.checked,
+        completed: !state.completed
       }
     default:
       return state
@@ -79,9 +87,10 @@ const todos = (state = [], action) => {
         todo(undefined, action)
       ]
     case 'CHECK_TODO':
-      return state.map(t =>
-        t.id === action.id ? null : t
-      ).filter(Boolean)
+      return state.filter(todo =>
+        todo.id !== action.id
+      )
+
     case 'TOGGLE_TODO':
       return state.map(t =>
         todo(t, action)

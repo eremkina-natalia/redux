@@ -6,9 +6,8 @@ const TodoList = ({ todos, onTodoClick, onTodoCheck }) => (
   {todos.map(todo => {
     console.log({...todo})
     return (<Todo
-      key={todo.id}
+      {...todo}  //это такой оператор расширения, кот позволяет хранить состояние неизменным
 
-      {...todo} //это такой оператор расширения, кот позволяет хранить состояние неизменным
       onClick={() => onTodoClick(todo.id)}
       onCheck={() => onTodoCheck(todo.id, todo.text)}
     />)

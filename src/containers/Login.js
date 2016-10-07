@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { loginTodo } from '../actions'
 
-let Login = ({ dispatch }) => {
+let Login = ({ dispatch, onClick }) => {
   let input
   return (
-    <div>
+    <header>
 
       <form className="formLogin" onSubmit={e => {
         e.preventDefault() //если будет вызван данный метод,то действие события по умолчанию не будет выполнено
@@ -22,17 +22,21 @@ let Login = ({ dispatch }) => {
         input = login
       }}  />
 
-      <input className="inputPswd" type="password" name="password" placeholder="enter pswd" 
+      <input className="inputPswd" type="password" name="password" placeholder="enter pswd"
       ref={ pswd => {
         input = pswd
       }} />
 
-        <button type="submit" className="signInBtn">
+      <label className="greet">
+        Привет,loginTodo(input.value)
+      </label>
+
+        <button type="submit" className="signInBtn" onClick={onClick }>
           Sign In
         </button>
 
       </form>
-    </div>
+    </header>
   )
 }
 Login = connect()(Login)
