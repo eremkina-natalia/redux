@@ -1,4 +1,3 @@
-// action описывает, какие изменения необходимо сделать
 import * as types from '../constants/ActionTypes';
 
 let nextTodoId = 0
@@ -21,14 +20,6 @@ export function toggleTodo(id){
   return{
     type: types.TOGGLE_TODO,
     id
-  };
-}
-
-export function changeTodo(id,text){
-  return{
-    type: types.CHANGE_TODO,
-    id,
-    text
   };
 }
 
