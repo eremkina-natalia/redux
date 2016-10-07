@@ -6,7 +6,8 @@ const TodoList = ({ todos, onTodoClick }) => (
   {todos.map(todo =>
     <Todo
       key={todo.id}
-      {...todo} //это такой оператор расширения, кот позволяет хранить состояние неизменным
+      {...todo}  //это такой оператор расширения, кот позволяет хранить состояние неизменным
+
       onClick={() => onTodoClick(todo.id)}
     />
   )}

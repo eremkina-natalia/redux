@@ -13,6 +13,7 @@ let AddTodo = ({ dispatch }) => {
         }
         dispatch(addTodo(input.value))
         input.value = ''
+
       }}>
         <input className="toDoInput" ref={node => {
           input = node
@@ -25,6 +26,7 @@ let AddTodo = ({ dispatch }) => {
   )
 }
 AddTodo = connect()(AddTodo)
+
 // это два вызова ф-и, первый аргумент-ф-я,кот должна возвращать объект,
 //во вторую ф-ю необходимо передать компонент react
 

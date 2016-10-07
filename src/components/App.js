@@ -4,7 +4,7 @@ import AddTodo from '../containers/AddTodo'
 import Login from '../containers/Login'
 import VisibleTodoList from '../containers/VisibleTodoList'
 
-import IndexedDB from '../utils/IndexedDB'
+//import IndexedDB from '../utils/IndexedDB'
 //import '../utils/mySql'
 
 

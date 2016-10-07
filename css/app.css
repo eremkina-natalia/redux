@@ -13,14 +13,27 @@ body{
     padding: 60px;
     text-align: center;
 }
-
 #content{
 /*  background: #EDE69B url("../to-do-list.jpg") no-repeat left;*/
   background-size: cover;
   width: 500px;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  padding: 20px;
+  padding: 20px 0 0;
+}
+
+header{
+  padding-top: 0;
+  margin-bottom: 50px;
+}
+footer{
+  bottom: 0;
+}
+.todoApp{
+  background: #fff;
+  margin: 130px 0 40px 0;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 #root{
   text-align: center;
@@ -45,11 +58,11 @@ ul li{
     margin-bottom: 5px;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #eee;
+    /*background-color: #eee;*/
     color: #7B8585;
     transition: 0.3s;
     font-size: 17px;
-    width: 390px;
+    width: 360px;
     height: 25px;
     overflow-x: hidden;
     float: left;
@@ -90,13 +103,23 @@ p{
   font-size: 15px;
   margin: 0 auto;
   margin: 20px 0 20px 0;
+  padding-bottom: 5px;
 }
 h1{
-  margin: 20px;
+  position: absolute;
+    top: -150px;
+    width: 100%;
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.25);
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    /* text-rendering: optimizeLegibility; */
 }
 .formLogin{
   margin: 0 auto;
-  margin-right: 5px;
+  margin-right: 20px;
   width: 150px;
 }
 .inputLogin{
@@ -119,14 +142,79 @@ h1{
   width: 60px;
 }
 .changeBtn{
+  float: left;
+  border-radius: 2px;
+  height: 45px;
+  width: 50px;
+  margin-bottom: 3px;
+}
+.deleteBtn{
   float: right;
   border-radius: 2px;
-  background: #beecea;
+  /*background: #beecea;*/
   height: 45px;
-  width: 70px;
-  padding: 10px 10px;
-
+  width: 50px;
 }
 .clear{
   clear: both;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.destroy {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  font-size: 30px;
+  color: #cc9a9a;
+  margin-bottom: 11px;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+todo-list li .destroy {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #cc9a9a;
+	margin-bottom: 11px;
+	transition: color 0.2s ease-out;
+}
+.destroy:hover {
+	color: #af5b5e;
+}
+.destroy:after {
+	content: '×';
+}
+li:hover .destroy {
+	display: block;
+}
+.greet{
+  visibility: hidden;
+}
+.greet: hover{
+  visibility: visible;
 }

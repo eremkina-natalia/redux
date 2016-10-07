@@ -35,7 +35,6 @@ export function checkTodo(text){
   return{
     type: types.CHECK_TODO,
     id: addTodo.id,
-    text
   };
 }
 
