@@ -21,6 +21,14 @@ import mapValues from 'lodash/mapValues';
     }
   }
 };*/
+const initialState = [
+  {
+    text: 'Use Redux',
+    completed: false,
+    id: 0
+  }
+]
+
 
 const todo = (state, action) => {
   switch (action.type) {
@@ -33,8 +41,7 @@ const todo = (state, action) => {
       }
       case 'CHECK_TODO':
         return {
-          id: action.id,
-          text: action.text,
+          id: !action.id,
           checked: true,
         }
 
@@ -45,8 +52,8 @@ const todo = (state, action) => {
 
       return {
         ...state,
-        completed: !state.completed,
-        checked: !state.checked
+        checked: !state.checked,
+        completed: !state.completed
       }
     default:
       return state
@@ -102,10 +109,9 @@ const todos = (state = [], action) => {
         todo(undefined, action)
       ]
     case 'CHECK_TODO':
-      return [
-        ...state,
-        //todo(state, action)
-      ]
+    return state.filter(todo =>
+      todo.id !== action.id
+    )
     case 'TOGGLE_TODO':
       return state.map(t =>
         todo(t, action)
