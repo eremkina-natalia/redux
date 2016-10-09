@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 //import Check from './Check'
 import { addTodo } from '../actions'
 
-const Todo = ({ onClick, completed, text, Check, checked }) => (
+const Todo = ({ onClick, completed, text, Check, checked, onCheck }) => (
   <div>
     <li className="liTodo"
       onClick={onClick}
@@ -16,7 +16,7 @@ const Todo = ({ onClick, completed, text, Check, checked }) => (
     </li>
 
     <button className="changeBtn"
-      onClick={onClick}
+      onClick={onCheck}
       style={{
           visibility: checked ? 'hidden' : 'visible'
       }}
