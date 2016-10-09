@@ -24,5 +24,9 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
-  }
+  },
+  "description": "In the project directory, you can run:",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

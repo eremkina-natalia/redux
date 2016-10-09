@@ -31,10 +31,10 @@ export function loginTodo(login){
   };
 }
 
-export function checkTodo(text){
+export function checkTodo(id, text){
   return{
     type: types.CHECK_TODO,
-    id: addTodo.id,
+    id,
     text
   };
 }

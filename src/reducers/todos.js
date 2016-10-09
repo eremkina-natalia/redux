@@ -1,27 +1,3 @@
-//import * as types from '../constants/ActionTypes';
-/*import lodash from 'lodash'
-import omit from 'lodash/omit';
-import assign from 'lodash/assign';
-import mapValues from 'lodash/mapValues';
-*/
-/*const initialState = {
-  todos: [1, 2, 3],
-  todosById: {
-    1: {
-      id: 1,
-      text: 'wash the dishes'
-    },
-    2: {
-      id: 2,
-      text: 'read the book'
-    },
-    3: {
-      id: 3,
-      text: 'do homework'
-    }
-  }
-};*/
-
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -35,6 +11,7 @@ const todo = (state, action) => {
         return {
           id: action.id,
           text: action.text,
+
           checked: true,
         }
 
@@ -102,10 +79,9 @@ const todos = (state = [], action) => {
         todo(undefined, action)
       ]
     case 'CHECK_TODO':
-      return [
-        ...state,
-        //todo(state, action)
-      ]
+      return state.map(t =>
+        t.id === action.id ? null : t
+      ).filter(Boolean)
     case 'TOGGLE_TODO':
       return state.map(t =>
         todo(t, action)

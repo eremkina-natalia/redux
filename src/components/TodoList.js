@@ -1,14 +1,18 @@
 import React, { PropTypes } from 'react'
 import Todo from './Todo'
 
-const TodoList = ({ todos, onTodoClick }) => (
+const TodoList = ({ todos, onTodoClick, onTodoCheck }) => (
   <ul>
-  {todos.map(todo =>
-    <Todo
+  {todos.map(todo => {
+    console.log({...todo})
+    return (<Todo
       key={todo.id}
+
       {...todo} //это такой оператор расширения, кот позволяет хранить состояние неизменным
       onClick={() => onTodoClick(todo.id)}
-    />
+      onCheck={() => onTodoCheck(todo.id, todo.text)}
+    />)
+    }
   )}
   </ul>
 )
