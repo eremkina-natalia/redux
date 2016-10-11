@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './components/App'
 import Home from './components/Home'
-import AppNotes from './components/AppNote'
+import AppNotes from './components/AppNotes'
 import NotFound from './components/NotFound'
 
 const store = createStore(reducer)

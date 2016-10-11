@@ -10,9 +10,11 @@ const TodoList = function({ todos, onTodoClick, onTodoDel }){
         key={todo.id}
         {...todo}
         onClick={ ()=>
-          onTodoClick(todo.id)}
+          onTodoClick(todo.id)
+        }
         onDel={()=>
-          onTodoDel(todo.id, todo.text)}
+          onTodoDel(todo.id, todo.text)
+        }
       />)
       }
     )}

@@ -38,7 +38,7 @@ const todo = (state, action) => {
       }
     }
 
-const todos = (state = [], action) => {
+const todos = (state = [initialState], action) => {
   switch (action.type) {
 
     case 'ADD_TODO':
@@ -58,6 +58,13 @@ const todos = (state = [], action) => {
         t.id !== action.id
         )
       )
+
+    case 'CLEAR_COMPLETED':
+      return(
+        state.filter(t =>
+          t.completed == false
+        )
+    )
 
     default:
       return state
