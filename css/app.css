@@ -2,13 +2,11 @@
     padding: 0;
     margin: 0;
 }
-
 html{
     font: 14px normal Arial, sans-serif;
     color: #626771;
     background-color: #fff;
 }
-
 body{
     padding: 60px;
     text-align: center;
@@ -21,13 +19,27 @@ body{
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 20px 0 0;
 }
-
 header{
   padding-top: 0;
   margin-bottom: 50px;
 }
 footer{
   bottom: 0;
+}
+button {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .todoApp{
   background: #fff;
@@ -38,62 +50,75 @@ footer{
 #root{
   text-align: center;
 }
-
 .none {
   display: none !important;
 }
-.todoform {
-
-  background: #FFF;
-  border: 1px solid gray;
-  margin: 0 auto;
+.clear{
+  clear: both;
 }
+/*Форма input todo*/
+.todoform {}
+.toDoInput{
+  margin: 10px;
+  padding: 10px 20px;
+  width: 350px;
+}
+.toDoBtn{
+  padding: 10px 10px;
+  background-color: #beecea;
+}
+/*кнопка*/
+.toDoBtn {
+  position: relative; *
+  font-weight: bold;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)), linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)), linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)), linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)), linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+  background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+}
+.toDoBtn:hover {
+  transition: .5s linear;
+  background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+}
+.toDoBtn:active {
+  top: 1px;
+}
+/**/
+/**/
 
+/*Список todo*/
 ul{
   margin-top: 20px;
   list-style: none;
 }
-
 ul li{
-    margin-bottom: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    /*background-color: #eee;*/
-    color: #7B8585;
-    transition: 0.3s;
-    font-size: 17px;
-    width: 360px;
-    height: 25px;
-    overflow-x: hidden;
-    float: left;
+  cursor: pointer;
+}
+.changeBtn{
+  float: left;
+  border-radius: 2px;
+  height: 40px;
+  cursor: context-menu;
+  /*background: url('http://soft-dor.ucoz.ru/red-button-med-30.jpg') no-repeat top;*/
+}
+.delBtn:hover{
+  color: #7eafe2;
+}
+.delBtn{
+  visibility: hidden;
+  float: right;
+}
+.liTodo:hover .delBtn {
+  visibility: visible;
 }
 
-ul li:hover{
-    background-color: #beecea;
-    overflow-x: visible;
-}
-
-ul li.focused{
-    color: #fff;
-    background: #41c7c2 ;
-    background-size: 25px 25px;
-    text-decoration: line-through;
-    font-size: 14px;
-
-}
+/*Ссылки внизу страницы*/
 p{
     padding-top: 15px;
     font-size: 12px;
-}
-
-.toDoBtn{
-  padding: 10px 20px;
-  background-color: #beecea;
-}
-.toDoInput{
-  margin: 10px;
-  padding: 10px 20px;
-  width: 300px;
 }
 .activelink{}
 .links{
@@ -102,20 +127,28 @@ p{
 .bottomLinks{
   font-size: 15px;
   margin: 0 auto;
-  margin: 20px 0 20px 0;
+  margin: 20px 0;
   padding-bottom: 5px;
 }
+/**/
+
 h1{
   position: absolute;
-    top: -150px;
-    width: 100%;
-    font-size: 100px;
-    font-weight: 100;
-    text-align: center;
-    color: rgba(175, 47, 47, 0.25);
-    -webkit-text-rendering: optimizeLegibility;
-    -moz-text-rendering: optimizeLegibility;
+  top: -150px;
+  width: 100%;
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: #1ccfc9;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
     /* text-rendering: optimizeLegibility; */
+}
+
+/*Форма входа*/
+a.signIn{
+  float: right;
+  text-decoration: none;
 }
 .formLogin{
   margin: 0 auto;
@@ -141,80 +174,35 @@ h1{
   height: 20px;
   width: 60px;
 }
-.changeBtn{
-  float: left;
-  border-radius: 2px;
-  height: 45px;
-  width: 50px;
-  margin-bottom: 3px;
-}
-.deleteBtn{
-  float: right;
-  border-radius: 2px;
-  /*background: #beecea;*/
-  height: 45px;
-  width: 50px;
-}
-.clear{
-  clear: both;
-}
-
-button {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: none;
-	font-size: 100%;
-	vertical-align: baseline;
-	font-family: inherit;
-	font-weight: inherit;
-	color: inherit;
-	-webkit-appearance: none;
-	appearance: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-.destroy {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 10px;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  margin: auto 0;
-  font-size: 30px;
-  color: #cc9a9a;
-  margin-bottom: 11px;
-  -webkit-transition: color 0.2s ease-out;
-  transition: color 0.2s ease-out;
-}
-todo-list li .destroy {
-	display: none;
-	position: absolute;
-	top: 0;
-	right: 10px;
-	bottom: 0;
-	width: 40px;
-	height: 40px;
-	margin: auto 0;
-	font-size: 30px;
-	color: #cc9a9a;
-	margin-bottom: 11px;
-	transition: color 0.2s ease-out;
-}
-.destroy:hover {
-	color: #af5b5e;
-}
-.destroy:after {
-	content: '×';
-}
-li:hover .destroy {
-	display: block;
-}
 .greet{
   visibility: hidden;
 }
-.greet: hover{
+.greet:hover{
   visibility: visible;
 }
+/**/
+
+/*список*/
+.border {
+  list-style: none;
+  padding: 0;
+}
+.border li {
+  font-family: "Trebuchet MS", "Lucida Sans";
+  padding: 7px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-left: 10px solid #7eafe2;
+  box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+              -2px -2px 5px 0 rgba(0,0,0,.1),
+              2px 2px 5px 0 rgba(0,0,0,.1),
+              -2px 2px 5px 0 rgba(0,0,0,.1);
+  font-size: 20px;
+  letter-spacing: 2px;
+  transition: 0.3s all linear;
+}
+.border li:hover {
+  border-left: 10px solid transparent;
+  border-right: 10px solid #7eafe2;
+}
+/**/

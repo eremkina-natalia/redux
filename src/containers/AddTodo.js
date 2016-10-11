@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
+import { Todo } from '../components/Todo'
 
 let AddTodo = ({ dispatch }) => {
-  let input
+  let input = document.querySelector('input')
   return (
     <div>
       <form className="todoform" onSubmit={e => {
@@ -11,6 +12,9 @@ let AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
+        //else if (input.value == li.value) {
+
+        //}
         dispatch(addTodo(input.value))
         input.value = ''
 
@@ -26,7 +30,6 @@ let AddTodo = ({ dispatch }) => {
   )
 }
 AddTodo = connect()(AddTodo)
-
 // это два вызова ф-и, первый аргумент-ф-я,кот должна возвращать объект,
 //во вторую ф-ю необходимо передать компонент react
 

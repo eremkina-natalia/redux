@@ -6,6 +6,6 @@ export const TOGGLE_TODO = 'TOGGLE_TODO';
 
 export const LOGIN_TODO = 'LOGIN_TODO';
 
-export const CHECK_TODO = 'CHECK_TODO';
+export const CHANGE_TODO = 'CHANGE_TODO';
 
 export const DELETE_TODO = 'DELETE_TODO';

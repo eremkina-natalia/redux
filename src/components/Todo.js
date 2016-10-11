@@ -1,44 +1,54 @@
 import React, { PropTypes } from 'react'
-import Check from './Check'
-//import { addTodo } from '../actions'
-import '../css/mark.png'
+//import Check from './Check'
+import { addTodo, changeTodo } from '../actions'
+import input from '../containers/AddTodo'
+import { connect } from 'react-redux'
 
-const Todo = ({ onClick, completed, text, Check, checked, onCheck }) => (
-  <div>
-  <button className="changeBtn" onClick={onClick}
-  style={{
-    background: !completed ? 'none' : 'gray url(mark.png) no-repeat'
-  }}
-  ></button>
-    <li className="liTodo"
-      onClick={onClick}
-      style={{
-        textDecoration: completed ? 'line-through' : 'none',
-        background: completed ? '#04D3D7' : '',
-        fontSize: checked ? '15px' : '',
-      //  visibility: checked ? 'hidden' : 'visible'
-      }}
-    >
-      {text}
-      <hr />
-    </li>
+let Todo = ({ onClick, completed, text, changed, onTodoChange, onDel, dispatch }) => {
+  let li
+  return(
+    <div>
 
+      <button className="changeBtn"
+        style={{
+            visibility: completed ? 'hidden' : 'visible'
+        }}
+        onClick={onTodoChange => {
+          onTodoChange.preventDefault()
 
-    <button className="changeBtn"
-      onClick={onCheck}
-      style={{
-          visibility: checked ? 'hidden' : 'visible'
-      }}
-    >
-      Change
-    </button>
+          dispatch(changeTodo())
+          input.value = text
+        }}
+      >
+        <img src="mark.png" />
+      </button>
 
+      <li className="liTodo"
+        onClick={onClick}
+        ref={node => {
+          li = node
+        }}
+        style={{
+          textDecoration: completed ? 'line-through' : 'none',
+          background: completed ? 'rgb(172, 183, 183)' : ''
+        }}
+      >
+        {text}
+        <button className="delBtn"
+          onClick={onDel}
+        >
+          X
+        </button>
 
-    <button className="deleteBtn">X</button>
+      </li>
 
-    <div className="clear"></div>
-  </div>
-)
+      <div className="clear"></div>
+    </div>
+  )
+}
+
+Todo = connect()(Todo)
+
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
