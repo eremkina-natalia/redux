@@ -1,33 +1,26 @@
 import React, { PropTypes } from 'react'
 import Todo from './Todo'
 
-const TodoList = ({ todos, onTodoClick, onTodoCheck }) => (
-  <ul>
+const TodoList = ({ todos, onTodoClick, onTodoChange, onTodoDel }) => {
+  let ul = document.querySelector('ul')
+  return (
+  <ul className="border">
   {todos.map(todo => {
-    console.log({...todo})
+
     return (<Todo
       key={todo.id}
-
-      {...todo} //это такой оператор расширения, кот позволяет хранить состояние неизменным
+      {...todo}
+      //все элементы в масиве
       onClick={() => onTodoClick(todo.id)}
-      onCheck={() => onTodoCheck(todo.id, todo.text)}
+      onChange={() => onTodoChange(todo.id, todo.text)}
+      onDel={() => onTodoDel(todo.id, todo.text)}
+
     />)
     }
   )}
   </ul>
 )
-
-/*const TodoCheckList = ({ todos, onTodoClick }) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => onTodoCheck(todo.id)}
-      />
-    )}
-  </ul>
-)*/
+}
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({

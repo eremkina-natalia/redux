@@ -1,3 +1,13 @@
+import input from '../containers/AddTodo'
+
+const state = [
+  {
+    text: 'Use Redux',
+    completed: false,
+    id: 0
+  }
+]
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -5,25 +15,38 @@ const todo = (state, action) => {
         id: action.id,
         text: action.text,
         completed: false,
-        checked: false,
+        changed: false,
+        deleted: false
       }
-      case 'CHECK_TODO':
+
+      case 'CHANGE_TODO':
         return {
           id: action.id,
           text: action.text,
-
-          checked: true,
+          deleted: true
+        }
+      case 'DELETE_TODO':
+        return {
+          id: action.id,
+          text: action.text,
+          deleted: true
         }
 
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {
         return state
       }
-
+      /*if (action.DELETE_TODO){
+        return {
+          ...state,
+          deleted: !state.deleted
+        }
+      }*/
       return {
         ...state,
-        completed: !state.completed,
-        checked: !state.checked
+        completed: !state.completed/*,
+        changed: !state.changed
+        deleted: !state.deleted*/
       }
     default:
       return state
@@ -70,7 +93,6 @@ const todo = (state, action) => {
   }
 }*/
 
-
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -78,13 +100,23 @@ const todos = (state = [], action) => {
         ...state,
         todo(undefined, action)
       ]
-    case 'CHECK_TODO':
-      return state.map(t =>
-        t.id === action.id ? null : t
-      ).filter(Boolean)
+
+    case 'CHANGE_TODO':
+      return (
+        state.map(t =>
+        t.id === action.id ? ( null ? state.text : action.text ) : t
+      ).filter
+      )
+
     case 'TOGGLE_TODO':
       return state.map(t =>
         todo(t, action)
+      )
+    case 'DELETE_TODO':
+      return (
+        state.map(t =>
+        t.id === action.id ? null : t
+        ).filter(Boolean)
       )
     default:
       return state

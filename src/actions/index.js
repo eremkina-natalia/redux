@@ -24,24 +24,18 @@ export function toggleTodo(id){
   };
 }
 
-export function loginTodo(login){
+export function changeTodo(id,text){
   return{
-    type: types.LOGIN_TODO,
-    login
-  };
-}
-
-export function checkTodo(id, text){
-  return{
-    type: types.CHECK_TODO,
+    type: types.CHANGE_TODO,
     id,
     text
   };
 }
 
-export function deleteTodo(id) {
+export function deleteTodo(id, text) {
   return {
     type: types.DELETE_TODO,
-    id
+    id,
+    text
   };
 }
