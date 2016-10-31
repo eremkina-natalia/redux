@@ -17,6 +17,13 @@ const todo = (state, action) => {
         deleted: false
       }
 
+      case 'CHANGE_TODO':
+        return {
+          id: action.id,
+          text: action.text,
+          deleted: true
+        }
+
       case 'DELETE_TODO':
         return {
           id: action.id,
@@ -46,6 +53,13 @@ const todos = (state = [initialState], action) => {
         ...state,
         todo(undefined, action)
       ]
+
+    case 'CHANGE_TODO':
+      return (
+        state.map(t =>
+        t.id === action.id ? ( null ? state.text : action.text ) : t
+      ).filter
+      )
 
     case 'TOGGLE_TODO':
       return state.map(t =>
