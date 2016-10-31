@@ -1,22 +1,21 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 html{
-    font: 14px normal Arial, sans-serif;
-    color: #626771;
-    background-color: #fff;
+  font: 14px normal Arial, sans-serif;
+  color: #626771;
 }
 body{
-    padding: 60px;
-    text-align: center;
+  text-align: center;
+  /*background: url('../src/image/fon.jpg') no-repeat;*/
+  background-color: #fff;
+  background-size: cover;
+  min-height: 100%;
+  width: 100%;
 }
 #content{
-/*  background: #EDE69B url("../to-do-list.jpg") no-repeat left;*/
-  background-size: cover;
-  width: 500px;
   margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 20px 0 0;
 }
 header{
@@ -24,7 +23,10 @@ header{
   margin-bottom: 50px;
 }
 footer{
-  bottom: 0;
+  margin: 0 auto;
+  background: rgba(255,255,255, 0.7);
+  padding-bottom: 1px;
+  max-width: 470px;
 }
 button {
   margin: 0;
@@ -42,7 +44,7 @@ button {
 	-moz-osx-font-smoothing: grayscale;
 }
 .todoApp{
-  background: #fff;
+  background: rgba(255,255,255, 0.4);
   margin: 130px 0 40px 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -59,9 +61,9 @@ button {
 /*Форма input todo*/
 .todoform {}
 .toDoInput{
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   padding: 10px 20px;
-  width: 350px;
+  width: 340px;
 }
 .toDoBtn{
   padding: 10px 10px;
@@ -87,8 +89,8 @@ button {
   top: 1px;
 }
 /**/
-/**/
 
+/**/
 /*Список todo*/
 ul{
   margin-top: 20px;
@@ -102,7 +104,6 @@ ul li{
   border-radius: 2px;
   height: 40px;
   cursor: context-menu;
-  /*background: url('http://soft-dor.ucoz.ru/red-button-med-30.jpg') no-repeat top;*/
 }
 .delBtn:hover{
   color: #7eafe2;
@@ -142,50 +143,14 @@ h1{
   color: #1ccfc9;
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
-    /* text-rendering: optimizeLegibility; */
 }
-
-/*Форма входа*/
-a.signIn{
-  float: right;
-  text-decoration: none;
-}
-.formLogin{
-  margin: 0 auto;
-  margin-right: 20px;
-  width: 150px;
-}
-.inputLogin{
-  margin-bottom: 5px;
-  border-radius: 2px;
-  height: 20px;
-  width: 150px;
-}
-.inputPswd{
-  margin-bottom: 5px;
-  border-radius: 2px;
-  height: 20px;
-  width: 150px;
-}
-.signInBtn{
-  float: right;
-  border-radius: 2px;
-  background: #beecea;
-  height: 20px;
-  width: 60px;
-}
-.greet{
-  visibility: hidden;
-}
-.greet:hover{
-  visibility: visible;
-}
-/**/
 
 /*список*/
 .border {
   list-style: none;
   padding: 0;
+  max-width: 474px;
+  margin: 0 auto;
 }
 .border li {
   font-family: "Trebuchet MS", "Lucida Sans";
@@ -200,9 +165,112 @@ a.signIn{
   font-size: 20px;
   letter-spacing: 2px;
   transition: 0.3s all linear;
+  background: #f0f0f0;
 }
 .border li:hover {
   border-left: 10px solid transparent;
   border-right: 10px solid #7eafe2;
 }
 /**/
+#leftBlock{
+  float: left;
+  position: relative;
+}
+#leftBlock, #rightBlock{
+  background-color: rgba(255,255,255, 0.4);*/
+  background-size: cover;
+  width: 40%;
+  height: 100%;
+}
+#rightBlock{
+  float: right;
+}
+.todoApp{
+  margin: 0 5%;
+  background-color: rgba(255,255,255, 0.1);
+  background-size: cover;
+  width: 40%;
+  height: 100%;
+}
+.btnLink{
+  background-color: #fff;
+  border-radius: 3px;
+  width: 30%;
+  padding: 20px;
+  top: 50%;
+  left: 35%;
+  position: absolute;
+  cursor: pointer;
+  color: #000;
+}
+.btnLink a{
+  text-decoration: none;
+}
+
+.note{
+  width: 200px;
+  height: auto;
+  float: left;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 2px;
+  margin: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: all .3s;
+}
+.note:hover{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.appNotes{
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+.notesGrid{
+  width: 80%;
+  margin: 0 auto;
+}
+.inputNote{
+  width: 350px !important;
+  height: 50px !important;
+  text-align: center;
+  border-radius: 3px;
+}
+.noteDel{
+  position: absolute;
+  right: 3%;
+  top: 3%;
+}
+.noteDel:hover{
+  cursor: pointer;
+}
+.addNote {
+  margin-bottom: 10px;
+}
+.addBtn{
+  width: 100px;
+  background: rgb(185, 45, 45);
+  height: 55px;
+  border: 2px solid black;
+  margin-left: 5px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.home{
+  opacity: 1;
+  height: 684px;
+}
+#header.header-home.bg-fill {
+  background-attachment: scroll;
+}
+#header.header-home {
+  display: table;
+  width: 100%;
+  padding: 50px 0 400px;
+}
+#header {
+  background: url('../src/image/fon.jpg') no-repeat;
+}

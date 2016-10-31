@@ -1,6 +1,34 @@
-import ul from '../components/TodoList'
+import Dexie from "dexie"
+//import ul from '../components/TodoList'
 import input from '../containers/AddTodo'
 
+let db = new Dexie("Todo");
+
+function databaseOpen(callback){
+  var version = 1;
+  var request = indexedDB.open('todos',version);
+
+  request.onsuccess = function(e) {
+    db = e.target.result;
+    callback();
+  };
+  request.onerror = databaseError;
+}
+
+function databaseError(e) {
+  console.error('An IndexedDb error has occurred', e)
+}
+
+
+db.version(1).stores({
+  items: "id, input.value"
+});
+
+db.open();
+
+export default db;
+
+/*
 (function() {
   var db = new Dexie("todos-dexie");
   //var input = document.querySelector('input');
@@ -45,4 +73,4 @@ import input from '../containers/AddTodo'
   function todoToHtml(todo) {
     return '<li><button id="'+todo._id+'">delete</button>'+todo.text+'</li>';
   }
-}());
+}());*/

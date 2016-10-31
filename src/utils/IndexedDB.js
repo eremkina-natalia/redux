@@ -5,7 +5,92 @@ var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || win
 
 var request = window.indexedDB.open("testDB", 2);
 
- var db;
+ //-- Информация о таблицах
+function storeInfo()
+{
+	//-- Читаем таблицы
+	var request = indexedDB.open(database);
+	//-- Если база данных не создана
+	request.onupgradeneeded = request.onsuccess = function(event)
+	{
+		//-- Чтение
+		var db = event.target.result;
+		storeNames = db.objectStoreNames;
+		version = db.version;
+		db.close();
+	};
+}
+
+//-- Если таблица НЕ найдена, продолжаем
+// переменная tablename-название таблицы
+if(!storeNames.contains(tablename))
+{
+	//-- Увиличиваем версию базы данных для возможности обновления
+  //ее обязательно нужно изменить,чтобы сработало событие onupgradeneeded
+	version++;
+	//-- Открываем базу данных
+	indexedDB.open(database, version).onupgradeneeded = function(event)
+	{
+		var db = event.target.result;
+		var store = db.createObjectStore(tablename, {keyPath: 'idnum'});
+		//-- Создаём индыксы
+		store.createIndex('title', 'title');
+		store.createIndex('value', 'value');
+		//-- Обновляем количество таблиц
+		storeNames = db.objectStoreNames;
+		//-- Закрываем соединение
+		db.close();
+	};
+}
+
+//-- Простое чтение данных,
+//открываем
+var request = indexedDB.open(database);
+//-- Продолжаем
+request.onsuccess = function(event)
+{
+	//-- База данных
+	db = event.target.result;
+	//-- ЕСЛИ ТАБЛИЦЫ НЕ СОЗДАНЫ, выводим
+	if(db.objectStoreNames.length === 0)
+	{
+		db.close();
+		return;
+	}
+	//-- ЧТЕНИЕ ВСЕХ КАТЕГОРИЙ
+	var tablename = prefix + 'category';
+	//-- Открыаем курсор через транзакцию
+	var request = db.transaction(tablename, "readonly").objectStore(tablename).openCursor();
+	//-- Просмотр результатов построчно
+	request.onsuccess = indexeddb_fetch_assoc;
+	//-- Функция вызавается раз на строку и по завершению
+	function indexeddb_fetch_assoc(event)
+	{
+		//-- Строка с данными
+		var cursor = event.target.result;
+		//-- Данные ещё есть
+		if(cursor)
+		{
+			//-- Работа с данными
+			categories[cursor.key] = [cursor.value.title, cursor.value.round, cursor.value.how];
+			//-- Переход на следующую строку
+			cursor.continue();
+		}
+		//-- Данные закончились и завершение чтения
+		else
+		{
+			//-- ЛЮБЫЕ ДЕЙСТВИЯ или закрытие базы данных
+			db.close();
+		}
+	}
+};
+
+//-- Удаление базы данных
+function removeDB()
+{
+	indexedDB.deleteDatabase(database);
+}
+
 /*   console.log("Error opening DB", event);
  };
  request.onupgradeneeded = function(event){
@@ -47,6 +132,7 @@ request.onsuccess = function(event){
      request.result.name = name; objectStore.put(request.result);
    };
 */
+/*
 var request =  indexedDB.open("Todos1");
 request.onupgradeneeded = function() {
     var db = request.result;
@@ -66,3 +152,4 @@ request.onsuccess = function() {
     var db = request.result;
 
 };
+*/
